@@ -1,0 +1,24 @@
+#!/bin/bash
+# Fix for mic on Ubuntu Touch
+# Ref: https://github.com/ubports/ubuntu-touch/issues/2022
+
+checked=0
+
+while true; do
+    status=$(pacmd list-source-outputs 2>/dev/null | awk 'NR == 1 {print $1}')
+    status=${status:-0}
+
+    if [ "$status" -eq 0 ] 2>/dev/null; then
+        checked=0
+    fi
+
+    if [ "$status" -gt 0 ] 2>/dev/null && [ "$checked" -eq 0 ]; then
+        parecord -r > /dev/null &
+        pid=$!
+        sleep 1
+        kill $pid 2>/dev/null || true
+        checked=1
+    fi
+
+    sleep 2
+done

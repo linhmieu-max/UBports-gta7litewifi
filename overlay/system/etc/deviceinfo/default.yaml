@@ -1,0 +1,36 @@
+# Device config for Samsung Galaxy Tab A7 Lite
+# SM-T220 (WiFi) / SM-T225 (LTE) — MT8768 — Halium 12
+#
+# Deviceinfo looks up this file by matching ro.product.device or
+# androidboot.device against the top-level YAML key.
+# Runtime device name can be: gta7litewifi, ot8, SM-T225, SM-T220
+# All aliases listed under Names so deviceinfo can find the config.
+
+gta7litewifi:
+  Vendor: Samsung
+  codename: gta7litewifi
+  PrettyName: Samsung Galaxy Tab A7 Lite
+  Names:
+    - gta7litewifi
+    - ot8
+    - SM-T220
+    - SM-T225
+    - A7 LITE
+    - SAMSUNG TAB A7 LITE
+    - samsung-gta7litewifi
+  DeviceType: tablet
+  GridUnit: 10
+  PrimaryOrientation:
+    - Portrait
+  SupportedOrientations:
+    - Portrait
+    - InvertedPortrait
+    - Landscape
+    - InvertedLandscape
+  DoubleTapToWake:
+    - /proc/android_touch/gesture_control|1|0
+    - /sys/devices/virtual/sec/tsp/dt2w_enable|1|0
+  XwaylandShm:
+    - true
+  VibrateDurationExtraMs: 40
+  FilesystemEncryption: false

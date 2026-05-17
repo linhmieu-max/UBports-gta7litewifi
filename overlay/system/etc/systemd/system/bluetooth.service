@@ -1,0 +1,13 @@
+# Override: stop systemd from managing bluetooth — handled by bluebinder/Android HAL
+# Without a valid [Service] block systemd refuses the unit → bluebinder crash-loops
+[Unit]
+Description=Bluetooth service (stub — managed via bluebinder on gta7litewifi)
+DefaultDependencies=no
+
+[Service]
+Type=oneshot
+ExecStart=/bin/true
+RemainAfterExit=yes
+
+[Install]
+WantedBy=bluetooth-touch.service

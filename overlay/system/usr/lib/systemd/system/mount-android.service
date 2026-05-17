@@ -1,0 +1,17 @@
+[Unit]
+Description=Mount Android partitions for Halium
+After=udev.service systemd-udevd.service
+Before=lxc@android.service
+DefaultDependencies=no
+ConditionPathExists=/android
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/bin/sh -c 'mkdir -p /dev/cpuset && mountpoint -q /dev/cpuset || mount none /dev/cpuset -t cpuset -o nodev,noexec,nosuid; /usr/sbin/mount-android.sh'
+ExecStartPost=/bin/sh -c 'initctl emit -n mounted-android 2>/dev/null || true'
+TimeoutStartSec=60
+
+[Install]
+WantedBy=multi-user.target
+WantedBy=halium.target

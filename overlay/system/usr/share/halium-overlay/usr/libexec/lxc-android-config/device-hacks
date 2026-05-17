@@ -1,0 +1,41 @@
+#!/bin/sh
+
+# Wait for the property system to be up.
+while [ ! -e /dev/socket/property_service ]; do sleep 0.1; done
+
+# Wait for nvram to be loaded.
+while [ "$(getprop vendor.service.nvram_init)" != "Ready" ]; do sleep 0.2; done
+while [ "$(getprop vendor.mtk.nvram.ready)" != "1" ]; do sleep 0.2; done
+
+# enable Wi-Fi adapter in client mode
+while [ ! -e /dev/wmtWifi ]; do sleep 0.2; done
+echo S > /dev/wmtWifi
+
+# set wifi.interface property since urfkill.conf expects that
+setprop wifi.interface wlan0
+
+# disable VoLTE until UT has vendor services implementation to fix LTE
+setprop persist.vendor.mtk.volte.enable 0
+setprop persist.vendor.volte_support 0
+
+# Set schedtune boost (try both cgroup v1 and v2 paths)
+if [ -e /sys/fs/cgroup/schedtune/schedtune.boost ]; then
+    echo 20 > /sys/fs/cgroup/schedtune/schedtune.boost
+    echo 1 > /sys/fs/cgroup/schedtune/schedtune.prefer_idle
+elif [ -e /sys/fs/cgroup/schedtune/top-app/schedtune.boost ]; then
+    echo 20 > /sys/fs/cgroup/schedtune/top-app/schedtune.boost
+    echo 1 > /sys/fs/cgroup/schedtune/top-app/schedtune.prefer_idle
+fi
+
+# Temporary workaround for waydroid gralloc
+if [ -e /var/lib/waydroid/images/system.img ]; then
+    echo "Waydroid images are installed"
+    mkdir -p /var/lib/waydroid/overlay/vendor/lib64/hw/
+    GRALLOC_SRC=/vendor_extra/lib64/hw/gralloc.rogue.so
+    GRALLOC_DST=/var/lib/waydroid/overlay/vendor/lib64/hw/gralloc.rogue.so
+    if [ -e "$GRALLOC_SRC" ] && [ ! -e "$GRALLOC_DST" ]; then
+        ln -sf "$GRALLOC_SRC" "$GRALLOC_DST" 2>/dev/null || true
+    fi
+else
+    echo "Waydroid images are not installed"
+fi
