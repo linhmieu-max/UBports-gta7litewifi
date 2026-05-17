@@ -1,7 +1,6 @@
 # Ubuntu Touch for Samsung Galaxy Tab A7 Lite (gta7litewifi)
 
-This repository contains the device-specific configuration files to port Ubuntu Touch to the Samsung Galaxy Tab A7 Lite.
-./refs/MAIN.png
+![Samsung Galaxy Tab A7 Lite](./refs//MAIN.png)
 
 ## Device Specifications
 
