@@ -7,7 +7,7 @@ deviceinfo_halium_version="12"
 
 # Kernel
 
-deviceinfo_kernel_source="https://github.com/linhmieu-max/android_kernel_samsung_gta7litewifi"
+deviceinfo_kernel_source="https://github.com/linhmieu-max/android_kernel_samsung_ot8"
 deviceinfo_kernel_source_branch="halium-12"
 deviceinfo_kernel_defconfig="gta7litewifi_defconfig halium.config"
 deviceinfo_kernel_clang_compile="true"
