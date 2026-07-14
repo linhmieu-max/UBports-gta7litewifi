@@ -1,9 +1,0 @@
-# Misuse this overlay for some Android properties
-
-on boot
-    setprop ubuntu.widi.supported 1
-
-service time_daemon vendor.time_daemon_HYBRIS_DISABLED
-    disabled
-    oneshot
-    override
