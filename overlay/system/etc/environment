@@ -1,3 +1,0 @@
-export GRALLOC_RENDERER=rogue
-export RO_BOARD_PLATFORM=mt6765
-export RO_HARDWARE_EGL=rogue
