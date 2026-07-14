@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Sound hacks for MT6765
+# Example: pacmd set-sink-volume 0 65536
+
+# Backlight hack
+if [ -d /sys/class/backlight/panel0-backlight ]; then
+    chmod 666 /sys/class/backlight/panel0-backlight/brightness
+fi
+
+exit 0

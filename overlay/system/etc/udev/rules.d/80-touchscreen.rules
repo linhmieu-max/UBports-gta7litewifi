@@ -1,0 +1,7 @@
+# Touchscreen
+SUBSYSTEM=="input", ATTRS{name}=="sec_touchscreen", ENV{ID_INPUT_TOUCHSCREEN}="1"
+SUBSYSTEM=="input", ATTRS{name}=="mtk-tpd", ENV{ID_INPUT_TOUCHSCREEN}="1"
+
+# Keys
+SUBSYSTEM=="input", ATTRS{name}=="mtk-kpd", ENV{ID_INPUT_KEY}="1"
+SUBSYSTEM=="input", ATTRS{name}=="mtk-pmic-keys", ENV{ID_INPUT_KEY}="1"
