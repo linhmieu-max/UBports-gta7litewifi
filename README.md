@@ -1,6 +1,9 @@
-# Ubuntu Touch for Samsung Galaxy Tab A7 Lite (gta7litewifi)
+# (DISCONTINUES) Ubuntu Touch for Samsung Galaxy Tab A7 Lite (gta7litewifi)
+## IM TIRED , I WORK OVER 1 YEARS AND STILL NOT WORK,IF YOU interest THIS PROJECT TRY DO YOURSELF 
+
 
 ![Samsung Galaxy Tab A7 Lite](./refs//MAIN.png)
+
 
 ## Device Specifications
 
