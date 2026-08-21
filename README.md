@@ -28,7 +28,7 @@
 
 ## Current Status
 
-**Current Stage:** Work in Progress 
+**Current Stage:** DISCONTINUES
 
 ![UBports on Samsung Galaxy Tab A7 Lite](./refs//LOGO.png)
 
